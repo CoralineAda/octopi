@@ -31,7 +31,7 @@ module Octopi
       end
       # Repository is not passed in from the data, set it manually.
       commits.each { |c| c.repository = repo }
-      commits
+      commits.reverse
     end
     
     # Finds all commits for the given options:

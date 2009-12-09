@@ -30,6 +30,11 @@ class CommitTest < Test::Unit::TestCase
         assert_equal 30, commits.size
       end
       
+      should "in order from latest to earliest" do
+        commits = Commit.find_all(:user => "fcoury", :repository => "octopi", :branch => "lazy")
+        assert_operator commits.last.committed_date, ">", commits.first.committed_date
+      end
+      
       # Tests issue #28
       should "be able to find commits in a private repository" do
         auth do
